@@ -17,19 +17,19 @@
 // that an object should have. In this example, the User interface defines that a 
 // user object should have a name (string), age (number), and isAdmin (boolean).
 
-interface User {
-    name: string;
-    age: number;
-    isAdmin: boolean;
-}
+// interface User {
+//     name: string;
+//     age: number;
+//     isAdmin: boolean;
+// }
 
-function createUser(name: string, age: number, isAdmin: boolean): User {
-    return {
-        name,
-        age,
-        isAdmin
-    };
-}
+// function createUser(name: string, age: number, isAdmin: boolean): User {
+//     return {
+//         name,
+//         age,
+//         isAdmin
+//     };
+// }
 
-const user1 = createUser("Alice", 30, true);
-console.log(user1);
+// const user1 = createUser("Alice", 30, true);
+// console.log(user1);
