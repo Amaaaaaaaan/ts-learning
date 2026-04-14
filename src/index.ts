@@ -33,3 +33,36 @@
 
 // const user1 = createUser("Alice", 30, true);
 // console.log(user1);
+
+
+// small assignment to understand the concept of interface and function with return type
+
+
+interface user{
+    name : string;
+    age : number;
+    address :{
+        city : string;
+        state : string;
+        pincode : number;
+    }
+}
+
+let user : user = {
+    name : "John Doe",
+    age : 14,
+    address : {
+        city : "New York",
+        state : "NY",
+        pincode : 10001
+    }
+}
+
+function islegal(user: user) : boolean {
+    if(user.age >= 18){
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log(islegal(user));
