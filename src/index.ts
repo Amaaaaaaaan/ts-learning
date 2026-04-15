@@ -36,47 +36,68 @@
 
 
 
-interface user {
+// interface user {
+//     name: string;
+//     age: number;
+//     address?: {   // ✅ IMPORTANT
+//         city: string;
+//         state: string;
+//         pincode: number;
+//     };
+//     islegal(): string;
+// }
+
+// class Manager implements user {
+//     name: string;
+//     age: number;
+//     address?: {
+//         city: string;
+//         state: string;
+//         pincode: number;
+//     };
+
+//     constructor(
+//         name: string,
+//         age: number,
+//         address?: user["address"]
+//     ) {
+//         this.name = name;
+//         this.age = age;
+//         if (address) {
+//             this.address = address;
+//         }
+//     }
+
+//     islegal(): string {
+//         return this.age >= 18 ? "legal" : "not legal";
+//     }
+// }
+
+// const manager1 = new Manager("John", 25, { city: "New York", state: "NY", pincode: 10001 });
+// const manager2 = new Manager("Jane", 17);
+
+// console.log(manager1);
+// console.log(manager1.islegal());
+// console.log(manager2);
+// console.log(manager2.islegal());
+
+
+// usage of type and intersection type
+
+type User = {
     name: string;
     age: number;
-    address?: {   // ✅ IMPORTANT
-        city: string;
-        state: string;
-        pincode: number;
-    };
-    islegal(): string;
-}
+};
 
-class Manager implements user {
-    name: string;
-    age: number;
-    address?: {
-        city: string;
-        state: string;
-        pincode: number;
-    };
+type Admin = {
+    role: string;
+};
 
-    constructor(
-        name: string,
-        age: number,
-        address?: user["address"]
-    ) {
-        this.name = name;
-        this.age = age;
-        if (address) {
-            this.address = address;
-        }
-    }
+type AdminUser = User & Admin;
 
-    islegal(): string {
-        return this.age >= 18 ? "legal" : "not legal";
-    }
-}
-
-const manager1 = new Manager("John", 25, { city: "New York", state: "NY", pincode: 10001 });
-const manager2 = new Manager("Jane", 17);
-
-console.log(manager1);
-console.log(manager1.islegal());
-console.log(manager2);
-console.log(manager2.islegal());
+const person: AdminUser = {
+    name: "Aman",
+    age: 21,
+    role: "admin"
+};
+console.log(person);
