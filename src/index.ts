@@ -35,34 +35,48 @@
 // console.log(user1);
 
 
-// small assignment to understand the concept of interface and function with return type
 
+interface user {
+    name: string;
+    age: number;
+    address?: {   // ✅ IMPORTANT
+        city: string;
+        state: string;
+        pincode: number;
+    };
+    islegal(): string;
+}
 
-interface user{
-    name : string;
-    age : number;
-    address :{
-        city : string;
-        state : string;
-        pincode : number;
+class Manager implements user {
+    name: string;
+    age: number;
+    address?: {
+        city: string;
+        state: string;
+        pincode: number;
+    };
+
+    constructor(
+        name: string,
+        age: number,
+        address?: user["address"]
+    ) {
+        this.name = name;
+        this.age = age;
+        if (address) {
+            this.address = address;
+        }
+    }
+
+    islegal(): string {
+        return this.age >= 18 ? "legal" : "not legal";
     }
 }
 
-let user : user = {
-    name : "John Doe",
-    age : 14,
-    address : {
-        city : "New York",
-        state : "NY",
-        pincode : 10001
-    }
-}
+const manager1 = new Manager("John", 25, { city: "New York", state: "NY", pincode: 10001 });
+const manager2 = new Manager("Jane", 17);
 
-function islegal(user: user) : boolean {
-    if(user.age >= 18){
-        return true;
-    } else {
-        return false;
-    }
-}
-console.log(islegal(user));
+console.log(manager1);
+console.log(manager1.islegal());
+console.log(manager2);
+console.log(manager2.islegal());
